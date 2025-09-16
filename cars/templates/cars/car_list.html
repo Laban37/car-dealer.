@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Available Cars</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for car in cars %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+
+                {% if car.carimage_set.exists %}
+                    <!-- Car Image Carousel -->
+                    <div id="carousel{{ car.id }}" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for img in car.carimage_set.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ img.image.url }}" class="d-block w-100" alt="{{ car.model }}">
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        {% if car.carimage_set.count > 1 %}
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ car.id }}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ car.id }}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <!-- Fallback if no images -->
+                    <img src="{% static 'images/PRADO.jpg' %}" class="card-img-top img-fluid" alt="No Image">
+                {% endif %}
+
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+                    <p class="card-text">
+                        <strong>Year:</strong> {{ car.year }}<br>
+                        <strong>Price:</strong> ${{ car.price }}<br>
+                        <strong>Transmission:</strong> {{ car.transmission }}
+                    </p>
+                    <a href="{% url 'car_detail' car.pk %}" class="btn btn-primary w-100">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No cars available right now.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

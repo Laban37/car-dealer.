@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h1 class="mb-4 text-primary">About Us</h1>
+            <p>
+                We are a trusted car dealer providing top-quality vehicles and 
+                reliable roadside assistance services. Our mission is to ensure 
+                your journey is always smooth and stress-free.
+            </p>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/about.jpg' %}" alt="About Car Dealer" class="img-fluid rounded shadow">
+        </div>
+    </div>
+</div>
+{% endblock %}

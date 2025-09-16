@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-5 text-primary">Our Services</h1>
+    <div class="row g-4">
+
+        <!-- Service 1 -->
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="card shadow-sm h-100 border-0 rounded-3 hover-shadow">
+                <img src="{% static 'images/accident recovery.jpg' %}" class="card-img-top" alt="Accident Recovery">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">🚑 Accident Recovery</h5>
+                    <p class="card-text">
+                        Fast and reliable support when you need it most. We’ll get you back on track quickly and safely.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="card shadow-sm h-100 border-0 rounded-3 hover-shadow">
+                <img src="{% static 'images/emergency towing.jpg' %}" class="card-img-top" alt="Emergency Towing">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">🚓 Emergency Towing</h5>
+                    <p class="card-text">
+                        24/7 assistance to get your car to safety anytime, anywhere.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="card shadow-sm h-100 border-0 rounded-3 hover-shadow">
+                <img src="{% static 'images/vehicle transport.jpg' %}" class="card-img-top" alt="Vehicle Transport">
+                <div class="card-body text-center">
+                    <h5 class="card-title text-dark">🚚 Vehicle Transport</h5>
+                    <p class="card-text">
+                        Secure and efficient delivery of vehicles right to your destination.
+                    </p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
